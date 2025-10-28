@@ -11,28 +11,30 @@ def main():
     era = info [7]
 
     team_data.append([name,"", runs_allowed, wins, losses, era])
+    #print(team_data)
+  myFile.close()
 
-    myFile.closed()
+  hitting = open("MLB_Hitting.csv", 'r')
 
-    hitting = open("MLB_Hitting.csv", 'r')
+  teamCount = 0
+  for line in hitting:
+    info = line.split(",")
+    runs_scored = info [3] 
+    #print(runs_scored)  
+    team_data[teamCount][1] = runs_scored
+    #print(team_data[teamCount])
 
-    teamCount = 0
-    for line in hitting:
-        info = line.split(",")
-        runs_scored = info [3] 
+    teamCount = teamCount + 1
 
-        team_data[teamCount][1] = runs_scored
-        #print(team_data[teamCount])
+  hitting.close()
 
-        teamCount = teamCount + 1
+  outFile = open("MLB_Output.csv", 'w')
 
-    hitting.close()
+  for line in team_data:
+    output = line[0] + ", " + line[1] + ", " + line[2] + ", " + line[3] + ", " + line[4] + ", " + line[5] + ", " + "\n"
+    outFile.write(str(line))
 
-    outFile = open("MLB_Output.csv", 'w')
+  outFile.close()
 
-    for line in team_data:
-        output = line[0] + ", " + line[1] + ", " + line[2] + ", " + line[3] + ", " + line[4] + ", " + line[5] + ", " + "\n"
-
-        outFile.write(str(line))
-
-    outFile.close()
+if __name__ == '__main__':
+  main()
