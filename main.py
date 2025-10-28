@@ -1,7 +1,7 @@
 def main():
   pitching = open("MLB_Pitching.csv", 'r')
   team_data = []
-
+  
   #get the import info out of pitching and store into team_data
 
   pitching.close()
