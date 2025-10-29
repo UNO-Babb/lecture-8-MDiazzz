@@ -1,7 +1,7 @@
 def main():
-  myFile = open("MLB_Pitching.csv", 'r')
   team_data = []
-
+  myFile = open("MLB_Pitching.csv", 'r')
+  
   for line in myFile:
     info = line.split(",")
     name = info [0]
@@ -9,8 +9,8 @@ def main():
     wins = info [4] 
     losses = info [5]
     era = info [7]
-
-    team_data.append([name,"", runs_allowed, wins, losses, era])
+    
+    team_data.append([name, "", runs_allowed, wins, losses, era])
     #print(team_data)
   myFile.close()
 
@@ -28,13 +28,13 @@ def main():
 
   hitting.close()
 
-  outFile = open("MLB_Output.csv", 'w')
+  OutFile = open("MLB_output.csv",'w')
 
   for line in team_data:
-    output = line[0] + ", " + line[1] + ", " + line[2] + ", " + line[3] + ", " + line[4] + ", " + line[5] + ", " + "\n"
-    outFile.write(str(line))
+    output = line[0] + "," + line[1] + "," + line[2] + "," + line[3] + "," + line[4] + "," +line[5] + "," + "\n"
+    OutFile.write(output)
 
-  outFile.close()
+  OutFile.close() 
 
 if __name__ == '__main__':
   main()
